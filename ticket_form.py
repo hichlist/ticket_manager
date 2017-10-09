@@ -1,5 +1,5 @@
 class ticket_form():
-    
+
     def __init__(self, title, body, user_name):
         self.title = title
         self.body = body
@@ -32,15 +32,10 @@ class ticket_form():
         ticket_file.close()
         print('Your Tiket has been created. The number of you Ticket is', next_number)
 
-    # def ticket(self):
-    #     enter_number_tt = input("Enter the number of your ticket: ")
-    #     f = open('c:\TT\TT_{}.txt'.format(enter_number_tt), 'r')
-    #     print(f.read())
-    #     f.close()
-
-# usr_nm = input('Enter your name: ') + '\n'
-# ttl = input('Enter the subject of the request: ') + '\n'
-# bdy = input('Describe your problem: ') + '\n'
-#
-# ticket_w = ticket(ttl, bdy, usr_nm)
-# ticket_w.form()
+    def create_ticket(self):
+        import sqlite3
+        conn = sqlite3.connect("ticket_manager.sqlite")
+        cursor = conn.cursor()
+        cursor.execute("insert into Tickets ('ticket_title', 'ticket_body', 'user_id') values ('{1}', '{1}', 2)".format(self.title, self.body))
+        conn.commit()
+        conn.close()

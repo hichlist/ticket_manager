@@ -8,15 +8,15 @@ if command == '1':
     ttl = input('Enter the subject of the request: ') + '\n'
     bdy = input('Describe your problem: ') + '\n'
     ticket_w = ticket_form(ttl, bdy, usr_nm)
-    ticket_w.form()
+    # ticket_w.form()
+    ticket_w.create_ticket()
 
 elif command == '2':
-    ticket_r = ticket_manager()
-    ticket_r.ticket_reader()
+    ticket_id = input('Enter ticket number: ') + '\n'
+    ticket_r = ticket_manager(ticket_id)
+    t = ticket_r.ticket_reader()
+    r = list(t)
+    print(r)
 
 else:
     print('Wrong command, try again')
-
-#------------------
-# ticket_w = ticket(1, 2, 3)
-# ticket_w.count()
