@@ -7,7 +7,9 @@ class ticket_manager:
         import sqlite3
         conn = sqlite3.connect("ticket_manager.sqlite")
         cursor = conn.cursor()
-        ticket = cursor.execute("select * from Tickets where id_ticket='{}'".format(self.ticket_id))
+        cursor.execute("select * from Tickets where id_ticket='{}'".format(self.ticket_id))
+        ticket = cursor.fetchall()
         conn.commit()
         conn.close()
-        return ticket
+        print(ticket)
+

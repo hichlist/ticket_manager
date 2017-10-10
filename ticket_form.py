@@ -14,6 +14,15 @@ class ticket_form():
         max_number = max(list_of_numbers)
         return int(max_number) + 1
 
+    def create_ticket(self):
+        import sqlite3
+        conn = sqlite3.connect("ticket_manager.sqlite")
+        cursor = conn.cursor()
+        cursor.execute("insert into Tickets ('ticket_title', 'ticket_body', 'user_id') "
+                       "values ('{}', '{}', 2)".format(self.title, self.body))
+        conn.commit()
+        conn.close()
+
     def form(self):
         import random
         deco_line = '________________________________________________________________\n'
@@ -31,11 +40,3 @@ class ticket_form():
         ticket_file.write(deco_line)        #Outline
         ticket_file.close()
         print('Your Tiket has been created. The number of you Ticket is', next_number)
-
-    def create_ticket(self):
-        import sqlite3
-        conn = sqlite3.connect("ticket_manager.sqlite")
-        cursor = conn.cursor()
-        cursor.execute("insert into Tickets ('ticket_title', 'ticket_body', 'user_id') values ('{1}', '{1}', 2)".format(self.title, self.body))
-        conn.commit()
-        conn.close()
