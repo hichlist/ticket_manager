@@ -11,5 +11,9 @@ class ticket_manager:
         ticket = cursor.fetchall()
         conn.commit()
         conn.close()
-        print(ticket)
+        ticket_list = ticket[0]
+        print('Ticket number:', ticket_list[0])
+        print('Title:', ticket_list[1])
+        print('----------------------------\n', ticket_list[2])
+
 

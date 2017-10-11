@@ -14,7 +14,6 @@ elif command == '2':
     ticket_id = int(input('Enter ticket number: '))
     ticket_read = ticket_manager(ticket_id)
     t = ticket_read.ticket_reader()
-    # print(t)
 
 else:
     print('Wrong command, try again')
